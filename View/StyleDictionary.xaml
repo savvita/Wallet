@@ -1,0 +1,122 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    xmlns:local="clr-namespace:Wallet.View">
+    <local:OutgoTransactionConverter x:Key="outgoTransactionConverter" />
+
+    <!--#region Grid Style -->
+    <Style TargetType="Grid">
+        <Style.Setters>
+            <Setter Property="Background" Value="#FFD9FFDC" />
+        </Style.Setters>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region GroupBox Style -->
+    <Style TargetType="GroupBox" BasedOn="{StaticResource MaterialDesignGroupBox}">
+        <Style.Setters>
+            <Setter Property="Margin" Value="16" />
+            <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth3" />
+            <Setter Property="BorderThickness" Value="3" />
+        </Style.Setters>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Button Style -->
+    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFloatingActionSecondaryButton}">
+        <Style.Setters>
+            <Setter Property="IsEnabled" Value="{Binding DataContext.ControlsEnabled, 
+                    RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="FontSize" Value="20" />
+        </Style.Setters>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region TextButton Style -->
+    <Style TargetType="Button" x:Key="TextButtonStyle" BasedOn="{StaticResource MaterialDesignRaisedSecondaryButton}">
+        <Style.Setters>
+            <Setter Property="IsEnabled" Value="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+            <Setter Property="Margin" Value="10" />
+
+        </Style.Setters>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Pack Icon Style -->
+    <Style TargetType="materialDesign:PackIcon">
+        <Style.Setters>
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Height" Value="50" />
+        </Style.Setters>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Label Style -->
+    <Style TargetType="Label">
+        <Style.Setters>
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style.Setters>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region ListBoxItem Style -->
+    <Style TargetType="ListBoxItem">
+        <Style.Setters>
+            <Setter Property="Margin" Value="5" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border CornerRadius="10" Background="DarkGreen">
+                            <ContentPresenter Margin="10"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style.Setters>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Border CornerRadius="10" Background="#FF34AB3D">
+                                <ContentPresenter Margin="10"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+    <!--#endregion-->
+
+    <!--#region ListBox Style -->
+    <Style TargetType="ListBox">
+        <Style.Setters>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Margin" Value="10" />
+
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding DisplayDate}" Foreground="#FFD9FFDC" TextWrapping="Wrap" />
+                            <Label Content="{Binding DisplaySum}" Foreground="#FFD9FFDC" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style.Setters>
+    </Style>
+    <!--#endregion-->
+
+</ResourceDictionary>
